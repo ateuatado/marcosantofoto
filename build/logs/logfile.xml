@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\fineart\phpunit.xml" tests="15" assertions="25" errors="0" failures="0" skipped="0" time="2.165021">
+    <testsuite name="App" tests="15" assertions="25" errors="0" failures="0" skipped="0" time="2.165021">
+      <testsuite name="Tests\Feature\AdminExtrasTest" file="C:\xampp\htdocs\fineart\tests\Feature\AdminExtrasTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.229829">
+        <testcase name="testPainelListagemRedirecionaParaLogin" file="C:\xampp\htdocs\fineart\tests\Feature\AdminExtrasTest.php" line="31" class="Tests\Feature\AdminExtrasTest" classname="Tests.Feature.AdminExtrasTest" assertions="1" time="0.229829"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\SecurityTest" file="C:\xampp\htdocs\fineart\tests\Feature\SecurityTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.387816">
+        <testcase name="testAdminRedirectsOrFailsIfGuest" file="C:\xampp\htdocs\fineart\tests\Feature\SecurityTest.php" line="17" class="Tests\Feature\SecurityTest" classname="Tests.Feature.SecurityTest" assertions="1" time="0.194003"/>
+        <testcase name="testEnsaiosVerSemLoginGeraBloqueio" file="C:\xampp\htdocs\fineart\tests\Feature\SecurityTest.php" line="26" class="Tests\Feature\SecurityTest" classname="Tests.Feature.SecurityTest" assertions="1" time="0.193813"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\UsabilityTest" file="C:\xampp\htdocs\fineart\tests\Feature\UsabilityTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.603865">
+        <testcase name="testHomeDisplaysConceptText" file="C:\xampp\htdocs\fineart\tests\Feature\UsabilityTest.php" line="17" class="Tests\Feature\UsabilityTest" classname="Tests.Feature.UsabilityTest" assertions="3" time="0.194188"/>
+        <testcase name="testEnsaiosIndexRedirectsIfUnauthenticated" file="C:\xampp\htdocs\fineart\tests\Feature\UsabilityTest.php" line="26" class="Tests\Feature\UsabilityTest" classname="Tests.Feature.UsabilityTest" assertions="1" time="0.192385"/>
+        <testcase name="testEnsaiosRedirectsIfUnauthenticated" file="C:\xampp\htdocs\fineart\tests\Feature\UsabilityTest.php" line="37" class="Tests\Feature\UsabilityTest" classname="Tests.Feature.UsabilityTest" assertions="1" time="0.217293"/>
+      </testsuite>
+      <testsuite name="Tests\Models\EnsaioModelTest" file="C:\xampp\htdocs\fineart\tests\Models\EnsaioModelTest.php" tests="2" assertions="6" errors="0" failures="0" skipped="0" time="0.389992">
+        <testcase name="testInsertEnsaio" file="C:\xampp\htdocs\fineart\tests\Models\EnsaioModelTest.php" line="19" class="Tests\Models\EnsaioModelTest" classname="Tests.Models.EnsaioModelTest" assertions="2" time="0.192765"/>
+        <testcase name="testGetEnsaioCompleto" file="C:\xampp\htdocs\fineart\tests\Models\EnsaioModelTest.php" line="36" class="Tests\Models\EnsaioModelTest" classname="Tests.Models.EnsaioModelTest" assertions="4" time="0.197227"/>
+      </testsuite>
+      <testsuite name="Tests\Models\EtapaModelTest" file="C:\xampp\htdocs\fineart\tests\Models\EtapaModelTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.441072">
+        <testcase name="testGetPrimeiraEtapa" file="C:\xampp\htdocs\fineart\tests\Models\EtapaModelTest.php" line="18" class="Tests\Models\EtapaModelTest" classname="Tests.Models.EtapaModelTest" assertions="3" time="0.258666"/>
+        <testcase name="testGetBifurcacao" file="C:\xampp\htdocs\fineart\tests\Models\EtapaModelTest.php" line="52" class="Tests\Models\EtapaModelTest" classname="Tests.Models.EtapaModelTest" assertions="1" time="0.182405"/>
+      </testsuite>
+      <testsuite name="ExampleDatabaseTest" file="C:\xampp\htdocs\fineart\tests\database\ExampleDatabaseTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.109045">
+        <testcase name="testModelFindAll" file="C:\xampp\htdocs\fineart\tests\database\ExampleDatabaseTest.php" line="17" class="ExampleDatabaseTest" classname="ExampleDatabaseTest" assertions="1" time="0.086964"/>
+        <testcase name="testSoftDeleteLeavesRow" file="C:\xampp\htdocs\fineart\tests\database\ExampleDatabaseTest.php" line="28" class="ExampleDatabaseTest" classname="ExampleDatabaseTest" assertions="2" time="0.022080"/>
+      </testsuite>
+      <testsuite name="ExampleSessionTest" file="C:\xampp\htdocs\fineart\tests\session\ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000783">
+        <testcase name="testSessionSimple" file="C:\xampp\htdocs\fineart\tests\session\ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.000783"/>
+      </testsuite>
+      <testsuite name="HealthTest" file="C:\xampp\htdocs\fineart\tests\unit\HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.002619">
+        <testcase name="testIsDefinedAppPath" file="C:\xampp\htdocs\fineart\tests\unit\HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.000689"/>
+        <testcase name="testBaseUrlHasBeenSet" file="C:\xampp\htdocs\fineart\tests\unit\HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.001929"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

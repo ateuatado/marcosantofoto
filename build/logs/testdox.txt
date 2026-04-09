@@ -1,0 +1,31 @@
+Admin Extras (Tests\Feature\AdminExtras)
+ [x] Painel listagem redireciona para login
+
+Ensaio Model (Tests\Models\EnsaioModel)
+ [x] Insert ensaio
+ [x] Get ensaio completo
+
+Etapa Model (Tests\Models\EtapaModel)
+ [x] Get primeira etapa
+ [x] Get bifurcacao
+
+Example Database
+ [x] Model find all
+ [x] Soft delete leaves row
+
+Example Session
+ [x] Session simple
+
+Health
+ [x] Is defined app path
+ [x] Base url has been set
+
+Security (Tests\Feature\Security)
+ [x] Admin redirects or fails if guest
+ [x] Ensaios ver sem login gera bloqueio
+
+Usability (Tests\Feature\Usability)
+ [x] Home displays concept text
+ [x] Ensaios index redirects if unauthenticated
+ [x] Ensaios redirects if unauthenticated
+

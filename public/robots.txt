@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /tests/
+Disallow: /vendor/
+Disallow: /writable/
+Sitemap: https://www.marcosantofoto.com.br/sitemap.xml

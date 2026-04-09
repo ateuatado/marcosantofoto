@@ -1,0 +1,32 @@
+# Dependencias PHP
+/vendor/
+
+# Arquivos de ambiente (seguranca)
+.env
+.env.*
+!.env.example
+
+# Uploads de usuarios
+/writable/uploads/
+/writable/cache/
+/writable/logs/
+/writable/session/
+/writable/tmp/
+/writable/debugbar/
+
+# Arquivos grandes e backups
+*.tar.gz
+*.zip
+*.7z
+*.gz
+app_sql.7z
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Preservar o proprio .gitignore
+!.gitignore

@@ -1,0 +1,39 @@
+﻿PHPUnit 11.5.48 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.12
+Configuration: C:\xampp\htdocs\fineart\phpunit.xml
+
+EE...     5 / 5 (100%)
+
+Time: 00:00.051, Memory: 14.00 MB
+
+There was 1 PHPUnit test runner warning:
+
+1) No code coverage driver available
+
+--
+
+There were 2 errors:
+
+1) ExampleDatabaseTest::testModelFindAll
+CodeIgniter\Exceptions\CriticalError: The required PHP extension "sqlite3" is not loaded. Install and enable it to use "SQLite3" driver.
+
+C:\xampp\htdocs\fineart\system\Database\Database.php:182
+C:\xampp\htdocs\fineart\system\Database\Database.php:59
+C:\xampp\htdocs\fineart\system\Database\Config.php:82
+C:\xampp\htdocs\fineart\system\Test\DatabaseTestTrait.php:90
+C:\xampp\htdocs\fineart\system\Test\DatabaseTestTrait.php:67
+C:\xampp\htdocs\fineart\system\Test\CIUnitTestCase.php:254
+
+2) ExampleDatabaseTest::testSoftDeleteLeavesRow
+CodeIgniter\Exceptions\CriticalError: The required PHP extension "sqlite3" is not loaded. Install and enable it to use "SQLite3" driver.
+
+C:\xampp\htdocs\fineart\system\Database\Database.php:182
+C:\xampp\htdocs\fineart\system\Database\Database.php:59
+C:\xampp\htdocs\fineart\system\Database\Config.php:82
+C:\xampp\htdocs\fineart\system\Test\DatabaseTestTrait.php:90
+C:\xampp\htdocs\fineart\system\Test\DatabaseTestTrait.php:67
+C:\xampp\htdocs\fineart\system\Test\CIUnitTestCase.php:254
+
+ERRORS!
+Tests: 5, Assertions: 4, Errors: 2, PHPUnit Warnings: 1.
