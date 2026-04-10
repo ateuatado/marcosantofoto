@@ -228,8 +228,12 @@
                             <input type="text" name="nome" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Como deseja ser chamado(a)" required>
                         </div>
                         <div class="mb-3">
-                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">WhatsApp ou e-mail *</label>
-                            <input type="text" name="contato" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Preferência de contato" required>
+                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">E-mail *</label>
+                            <input type="email" name="email_contato" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Telefone / WhatsApp *</label>
+                            <input type="tel" name="telefone" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="(11) 91234-5678" required>
                         </div>
                         <div class="mb-4">
                             <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Mensagem <span style="opacity:0.5;">(opcional)</span></label>
@@ -240,6 +244,7 @@
                             Enviar Solicitação
                         </button>
                     </form>
+
 
                 </div>
 

@@ -279,13 +279,16 @@ class Ensaios extends BaseController
 
         $pedidoModel = new \App\Models\PedidoAquisicaoModel();
 
-        // Coleta dados
+        // Coleta dados — combina email+telefone em meio_contato para o banco
+        $emailContato = $this->request->getPost('email_contato');
+        $telefone     = $this->request->getPost('telefone');
+
         $dados = [
             'ensaio_id'    => $this->request->getPost('ensaio_id'),
             'item_id'      => $this->request->getPost('item_id'),
             'user_id'      => auth()->id(),
             'nome_contato' => $this->request->getPost('nome'),
-            'meio_contato' => $this->request->getPost('contato'),
+            'meio_contato' => "Email: {$emailContato} | Tel: {$telefone}",
             'mensagem'     => $this->request->getPost('mensagem'),
             'status'       => 'pendente'
         ];
@@ -303,8 +306,9 @@ class Ensaios extends BaseController
             $mail->Subject = "Novo Interesse: Obra #{$dados['item_id']}";
             $mail->Body    = "Um colecionador demonstrou interesse.<br><br>"
                            . "<strong>Nome:</strong> {$dados['nome_contato']}<br>"
-                           . "<strong>Contato:</strong> {$dados['meio_contato']}<br>"
-                           . "<strong>Mensagem:</strong> {$dados['mensagem']}<br>"
+                           . "<strong>E-mail:</strong> {$emailContato}<br>"
+                           . "<strong>Telefone:</strong> {$telefone}<br>"
+                           . "<strong>Mensagem:</strong> " . ($dados['mensagem'] ?: '—') . "<br><br>"
                            . "<strong>ID da Obra:</strong> #{$dados['item_id']}<br><br>"
                            . "Verifique o painel administrativo.";
             $mail->send();
