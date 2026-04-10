@@ -57,17 +57,19 @@ abstract class BaseController extends Controller
      */
     protected function criarMailer(): \PHPMailer\PHPMailer\PHPMailer
     {
+        // Usa o Config\Email que o CI4 popula automaticamente a partir do .env
+        // Mais confiável do que chamar env() diretamente em todos os ambientes
+        $cfg = config('Email');
+
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
-
         $mail->isSMTP();
-        $mail->Host     = env('email.SMTPHost', 'smtppro.zoho.com');
+        $mail->Host     = $cfg->SMTPHost    ?: 'smtppro.zoho.com';
         $mail->SMTPAuth = true;
-        $mail->Username = env('email.SMTPUser', '');
-        $mail->Password = env('email.SMTPPass', '');
-        $mail->Port     = (int) env('email.SMTPPort', 587);
+        $mail->Username = $cfg->SMTPUser    ?: '';
+        $mail->Password = $cfg->SMTPPass    ?: '';
+        $mail->Port     = (int) ($cfg->SMTPPort ?: 587);
 
-        // Lê o tipo de encriptação do .env: 'tls' = STARTTLS (587), 'ssl' = SMTPS (465)
-        $crypto = strtolower((string) env('email.SMTPCrypto', 'tls'));
+        $crypto = strtolower((string) ($cfg->SMTPCrypto ?: 'tls'));
         $mail->SMTPSecure = ($crypto === 'ssl')
             ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS
             : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
@@ -82,8 +84,8 @@ abstract class BaseController extends Controller
         $mail->CharSet = 'UTF-8';
         $mail->isHTML(true);
         $mail->setFrom(
-            env('email.fromEmail', ''),
-            env('email.fromName', 'Marco Santo')
+            $cfg->fromEmail ?: $cfg->SMTPUser,
+            $cfg->fromName  ?: 'Marco Santo'
         );
 
         return $mail;
