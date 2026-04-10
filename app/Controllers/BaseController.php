@@ -60,12 +60,18 @@ abstract class BaseController extends Controller
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
 
         $mail->isSMTP();
-        $mail->Host       = env('email.SMTPHost', 'smtppro.zoho.com');
-        $mail->SMTPAuth   = true;
-        $mail->Username   = env('email.SMTPUser', '');
-        $mail->Password   = env('email.SMTPPass', '');
-        $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = (int) env('email.SMTPPort', 465);
+        $mail->Host     = env('email.SMTPHost', 'smtppro.zoho.com');
+        $mail->SMTPAuth = true;
+        $mail->Username = env('email.SMTPUser', '');
+        $mail->Password = env('email.SMTPPass', '');
+        $mail->Port     = (int) env('email.SMTPPort', 587);
+
+        // Lê o tipo de encriptação do .env: 'tls' = STARTTLS (587), 'ssl' = SMTPS (465)
+        $crypto = strtolower((string) env('email.SMTPCrypto', 'tls'));
+        $mail->SMTPSecure = ($crypto === 'ssl')
+            ? \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS
+            : \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+
         $mail->SMTPOptions = [
             'ssl' => [
                 'verify_peer'       => false,
