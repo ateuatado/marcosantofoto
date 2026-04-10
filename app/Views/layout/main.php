@@ -49,6 +49,10 @@
                 <?php if (auth()->loggedIn()): ?>
                     <a href="<?= site_url('metodo') ?>" class="nav-link text-white text-uppercase small ls-2 me-3 d-inline" style="opacity: 0.4; font-size: 0.6rem;">Método</a>
                     <a href="<?= site_url('perfil/trocar_senha') ?>" class="nav-link text-white text-uppercase small ls-2 me-3 d-inline" style="opacity: 0.4; font-size: 0.6rem;">Senha</a>
+                    <?php if (auth()->user()->inGroup('superadmin')): ?>
+                        <span style="opacity: 0.15; margin-right: 0.75rem; font-size: 0.6rem;">|</span>
+                        <a href="<?= site_url('admin') ?>" class="nav-link text-white text-uppercase small ls-2 me-3 d-inline" style="opacity: 0.4; font-size: 0.6rem; color: #c8a96e !important;">Admin</a>
+                    <?php endif; ?>
                     <a href="<?= url_to('logout') ?>" class="nav-link text-white text-uppercase small ls-2 d-inline">Sair</a>
                 <?php else: ?>
                     <a href="<?= url_to('login') ?>" class="nav-link text-white text-uppercase small ls-2">Acessar</a>

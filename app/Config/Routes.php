@@ -77,9 +77,6 @@ $routes->group('admin', ['filter' => 'group:superadmin'], function($routes) {
     $routes->get('candidatura/aceitar/(:num)',      'Admin::aceitar_candidatura/$1');
     $routes->get('candidatura/recusar/(:num)',      'Admin::recusar_candidatura/$1');
 
-    // --- DIAGNÓSTICO SMTP (remover após confirmar) ---
-    $routes->get('testar_email', 'TesteEmail::index');
-
     // --- SANTUÁRIO (PÁGINAS EXTRAS) ---
     $routes->group('extras', function($routes) {
         $routes->get('/', 'AdminExtras::index');                 // Painel Seletor

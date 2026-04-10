@@ -8,6 +8,19 @@
 <div class="auth-container">
     <div class="auth-box">
         <h2 class="auth-title">QUEM É VOCÊ?</h2>
+
+        <?php if (session()->has('error')): ?>
+            <div class="auth-erro"><?= esc(session('error')) ?></div>
+        <?php endif; ?>
+
+        <?php if (session()->has('errors')): ?>
+            <div class="auth-erro">
+                <?php foreach ((array) session('errors') as $erro): ?>
+                    <div><?= esc($erro) ?></div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
         <form action="<?= url_to('login') ?>" method="post">
             <?= csrf_field() ?>
             <div class="auth-group">

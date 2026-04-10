@@ -279,7 +279,6 @@
 const base_url = "<?= base_url() ?>";
 
 function abrirFichaObra(dados, btn) {
-    console.log("Abrindo ficha:", dados); // LOG PARA DEBUG
     const overlay = document.getElementById('overlayObra');
     
     // Reseta visualização
@@ -315,7 +314,6 @@ function fecharFichaObra() {
 }
 
 function mostrarFormulario() {
-    console.log("Mostrando formulário...");
     document.getElementById('areaFicha').classList.add('d-none');
     document.getElementById('areaFormulario').classList.remove('d-none');
 }
@@ -327,7 +325,6 @@ function voltarFicha() {
 
 async function enviarInteresse(event) {
     event.preventDefault();
-    console.log("Enviando formulário...");
     const btn = document.getElementById('btnEnviar');
     const form = document.getElementById('formAquisicao');
     
@@ -343,8 +340,6 @@ async function enviarInteresse(event) {
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
         });
         const result = await response.json();
-        console.log("Resposta do servidor:", result);
-
         if (result.status === 'success') {
             document.getElementById('areaFormulario').classList.add('d-none');
             document.getElementById('areaSucesso').classList.remove('d-none');

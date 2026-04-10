@@ -16,7 +16,7 @@
 
 <div class="min-vh-100 bg-black text-white">
 
-    {{-- HERO --}}
+    <!-- HERO -->
     <div class="container" style="padding-top: 130px;">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    {{-- CONDIÇÕES --}}
+    <!-- CONDIÇÕES -->
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    {{-- FORMULÁRIO --}}
+    <!-- FORMULÁRIO -->
     <div class="container pb-5" id="formulario">
         <div class="row justify-content-center">
             <div class="col-md-6">

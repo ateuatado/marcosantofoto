@@ -22,7 +22,7 @@
 
 <div class="min-vh-100 bg-black text-white">
 
-    {{-- HERO --}}
+    <!-- HERO -->
     <div class="container py-5" style="padding-top: 120px !important;">
         <div class="row justify-content-center">
             <div class="col-md-7 text-center">
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    {{-- OS 5 ATOS --}}
+    <!-- OS 5 ATOS -->
     <div class="container py-5">
         <div class="row justify-content-center">
 
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    {{-- PACTO DE COAUTORIA --}}
+    <!-- PACTO DE COAUTORIA -->
     <div class="container py-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-7">
@@ -171,7 +171,7 @@
         </div>
     </div>
 
-    {{-- CTA FINAL --}}
+    <!-- CTA FINAL -->
     <div class="container py-5 mb-5 text-center">
         <div class="row justify-content-center">
             <div class="col-md-5">

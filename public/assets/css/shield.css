@@ -1,0 +1,256 @@
+/*
+ * shield.css — Login / Register / Magic Link
+ * Design system: fundo preto, dourado #c8a96e, tipografia EB Garamond + Inter
+ */
+
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root {
+    --luz-guia:           #c8a96e;
+    --luz-guia-hover:     #b8934e;
+    --fundo:              #050505;
+    --fundo-card:         rgba(255, 255, 255, 0.04);
+    --borda-sutil:        rgba(200, 169, 110, 0.2);
+    --borda-foco:         rgba(200, 169, 110, 0.7);
+    --texto-principal:    rgba(255, 255, 255, 0.92);
+    --texto-secundario:   rgba(255, 255, 255, 0.45);
+    --input-bg:           rgba(255, 255, 255, 0.05);
+    --input-bg-foco:      rgba(200, 169, 110, 0.08);
+    --raio:               6px;
+    --transicao:          0.25s ease;
+}
+
+/* ============================================================
+   Container principal — centraliza no ecrã inteiro
+   ============================================================ */
+.auth-container {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 1.5rem 3rem; /* espaço para o header fixo */
+    background-color: var(--fundo);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ornamento de luz ambiente dourada atrás do card */
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(ellipse at center, rgba(200, 169, 110, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================================
+   Card do formulário
+   ============================================================ */
+.auth-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    background: var(--fundo-card);
+    border: 1px solid var(--borda-sutil);
+    border-radius: var(--raio);
+    padding: 3rem 2.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(200, 169, 110, 0.05);
+    animation: auth-entrando 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes auth-entrando {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   Título
+   ============================================================ */
+.auth-title {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--luz-guia);
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   Grupos de campo
+   ============================================================ */
+.auth-group {
+    margin-bottom: 1.4rem;
+}
+
+.auth-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-secundario);
+    margin-bottom: 0.5rem;
+}
+
+.auth-input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--input-bg);
+    border: 1px solid var(--borda-sutil);
+    border-radius: var(--raio);
+    color: var(--texto-principal);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color var(--transicao), background var(--transicao), box-shadow var(--transicao);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.auth-input:focus {
+    border-color: var(--borda-foco);
+    background: var(--input-bg-foco);
+    box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
+}
+
+.auth-input::placeholder {
+    color: var(--texto-secundario);
+}
+
+/* Corrige o fundo de preenchimento automático do browser */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 100px #0e0e0e inset;
+    -webkit-text-fill-color: var(--texto-principal);
+    caret-color: var(--texto-principal);
+}
+
+/* ============================================================
+   Botão primário
+   ============================================================ */
+.auth-btn {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    margin-top: 0.5rem;
+    background-color: var(--luz-guia);
+    color: #050505;
+    border: 1px solid var(--luz-guia);
+    border-radius: var(--raio);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color var(--transicao), color var(--transicao), transform var(--transicao);
+}
+
+.auth-btn:hover {
+    background-color: transparent;
+    color: var(--luz-guia);
+    transform: translateY(-1px);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   Links auxiliares (Quero me apresentar, Esqueci a senha)
+   ============================================================ */
+.auth-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.1rem;
+    color: var(--texto-secundario);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+.auth-link:hover {
+    color: var(--luz-guia);
+}
+
+/* ============================================================
+   Mensagens de erro / alerta
+   ============================================================ */
+.auth-erro {
+    background: rgba(220, 50, 50, 0.12);
+    border: 1px solid rgba(220, 50, 50, 0.3);
+    border-radius: var(--raio);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.4rem;
+    color: #ff7a7a;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.auth-sucesso {
+    background: rgba(50, 180, 100, 0.12);
+    border: 1px solid rgba(50, 180, 100, 0.3);
+    border-radius: var(--raio);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.4rem;
+    color: #6de0a0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+}
+
+/* ============================================================
+   Separador "ou"
+   ============================================================ */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    color: var(--texto-secundario);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--borda-sutil);
+}
+
+/* ============================================================
+   Responsivo — telefones pequenos
+   ============================================================ */
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .auth-title {
+        font-size: 1.4rem;
+    }
+}

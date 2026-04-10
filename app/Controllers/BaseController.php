@@ -42,4 +42,45 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         // $this->session = service('session');
     }
+
+    /**
+     * Cria e configura uma instância do PHPMailer lendo as credenciais do .env.
+     *
+     * Uso:
+     *   $mail = $this->criarMailer();
+     *   $mail->addAddress($destinatario);
+     *   $mail->Subject = '...';
+     *   $mail->Body    = '...';
+     *   $mail->send();
+     *
+     * @return \PHPMailer\PHPMailer\PHPMailer
+     */
+    protected function criarMailer(): \PHPMailer\PHPMailer\PHPMailer
+    {
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+
+        $mail->isSMTP();
+        $mail->Host       = env('email.SMTPHost', 'smtppro.zoho.com');
+        $mail->SMTPAuth   = true;
+        $mail->Username   = env('email.SMTPUser', '');
+        $mail->Password   = env('email.SMTPPass', '');
+        $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = (int) env('email.SMTPPort', 465);
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer'       => false,
+                'verify_peer_name'  => false,
+                'allow_self_signed' => true,
+            ],
+        ];
+        $mail->CharSet = 'UTF-8';
+        $mail->isHTML(true);
+        $mail->setFrom(
+            env('email.fromEmail', ''),
+            env('email.fromName', 'Marco Santo')
+        );
+
+        return $mail;
+    }
 }
+

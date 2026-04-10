@@ -1,0 +1,221 @@
+/*
+ * intimidade.css
+ * Utilitários globais que complementam o Bootstrap para o projeto marcosantofoto.
+ * Carregado em todas as páginas via layout/main.php.
+ */
+
+/* ============================================================
+   Variáveis globais
+   ============================================================ */
+:root {
+    --luz-guia:          #c8a96e;
+    --luz-guia-dim:      rgba(200, 169, 110, 0.5);
+    --fundo-main:        #050505;
+    --branco-incerteza:  rgba(255, 255, 255, 0.75);
+    --texto-muted:       rgba(255, 255, 255, 0.45);
+}
+
+/* ============================================================
+   Tipografia global
+   ============================================================ */
+body {
+    background-color: var(--fundo-main);
+    color: var(--branco-incerteza);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Garante que o fundo preto cobre 100% da altura mesmo em páginas curtas */
+html {
+    background-color: var(--fundo-main);
+    scroll-behavior: smooth;
+}
+
+/* ============================================================
+   Utilitário de letter-spacing (usado em toda a UI)
+   ============================================================ */
+.ls-1 { letter-spacing: 0.1em; }
+.ls-2 { letter-spacing: 0.18em; }
+.ls-3 { letter-spacing: 0.25em; }
+.ls-4 { letter-spacing: 0.35em; }
+
+/* ============================================================
+   Links globais — herdam a cor do contexto por padrão
+   ============================================================ */
+a {
+    color: inherit;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+    color: var(--luz-guia);
+}
+
+/* ============================================================
+   Header fixo — garante que o conteúdo não fica por baixo dele
+   ============================================================ */
+header {
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    z-index: 100;
+}
+
+/* ============================================================
+   Card de ensaio — grade da listagem
+   ============================================================ */
+.card-ensaio {
+    transition: transform 0.3s ease;
+}
+
+.card-ensaio:hover {
+    transform: translateY(-4px);
+}
+
+/* Cursor bloqueado para ensaios indisponíveis */
+.cursor-blocked {
+    cursor: not-allowed;
+}
+
+.cursor-blocked:hover {
+    color: inherit !important;
+}
+
+/* ============================================================
+   Ornamento "linha dourada" (hero-linha, usado em metodo e candidatura)
+   ============================================================ */
+.hero-linha {
+    width: 40px;
+    height: 1px;
+    background: var(--luz-guia);
+    opacity: 0.4;
+    margin: 1.5rem 0;
+}
+
+/* ============================================================
+   Contagem regressiva (countdown ensaios)
+   ============================================================ */
+#countdown {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Alertas Bootstrap — sobrescreve para o tema escuro
+   ============================================================ */
+.alert-warning {
+    background-color: rgba(200, 169, 110, 0.1);
+    border-color: rgba(200, 169, 110, 0.3);
+    color: var(--luz-guia);
+}
+
+.alert-danger {
+    background-color: rgba(220, 50, 50, 0.1);
+    border-color: rgba(220, 50, 50, 0.3);
+    color: #ff8a8a;
+}
+
+.alert-success {
+    background-color: rgba(50, 180, 100, 0.1);
+    border-color: rgba(50, 180, 100, 0.3);
+    color: #7de0a8;
+}
+
+/* ============================================================
+   Formulários escuros — usados na candidatura e perfil
+   ============================================================ */
+.form-dark {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.form-dark:focus {
+    background: rgba(255, 255, 255, 0.07) !important;
+    border-color: rgba(200, 169, 110, 0.4) !important;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.form-dark option {
+    background: #111;
+}
+
+.form-dark::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   Botão terroso (CTA principal — home e ensaios)
+   ============================================================ */
+.btn-terroso {
+    background-color: var(--luz-guia);
+    color: var(--fundo-main);
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 1px solid var(--luz-guia);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-terroso:hover {
+    background-color: transparent;
+    color: var(--luz-guia);
+}
+
+/* ============================================================
+   Bootstrap overrides para o tema escuro
+   ============================================================ */
+
+/* Links de navegação (nav-link) no header */
+.nav-link {
+    transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    opacity: 1 !important;
+}
+
+/* Texto muted override para fundo escuro */
+.text-muted {
+    color: var(--texto-muted) !important;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fundo-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(200, 169, 110, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(200, 169, 110, 0.5);
+}
+
+/* ============================================================
+   Responsivo — ajustes gerais para mobile
+   ============================================================ */
+@media (max-width: 768px) {
+    .card-ensaio:hover {
+        transform: none; /* evita comportamento estranho em touch */
+    }
+
+    .ls-2,
+    .ls-3,
+    .ls-4 {
+        letter-spacing: 0.1em; /* reduz em telas pequenas para não cortar texto */
+    }
+}

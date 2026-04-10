@@ -89,25 +89,6 @@ class AdminExtras extends BaseController
             return redirect()->to('/');
 
 
-        // --- BLOCO DE DEBUG (COLE ISTO) ---
-        $jsonRaw = $this->request->getPost('configuracoes_json');
-
-        // Se o título for "DEBUG", matamos o processo e mostramos os dados
-        if ($this->request->getPost('titulo') === 'DEBUG') {
-            echo "<h1>DEBUG DO JSON</h1>";
-            echo "<h3>1. O que chegou do Javascript (Raw):</h3>";
-            var_dump($jsonRaw);
-
-            echo "<h3>2. Tentativa de Decodificação (PHP):</h3>";
-            $decoded = json_decode((string)$jsonRaw, true);
-            var_dump($decoded);
-
-            echo "<h3>3. Erro de JSON (se houver):</h3>";
-            echo json_last_error_msg();
-            exit; // Para tudo aqui
-        }
-        // --- FIM DO BLOCO DE DEBUG ---
-
         $model = new EnsaioPaginaExtraModel();
 
         $id = $this->request->getPost('id');
@@ -115,9 +96,9 @@ class AdminExtras extends BaseController
 
         $dados = [
             'ensaio_id' => $ensaioId,
-            'titulo' => $this->request->getPost('titulo'),
-            'tipo' => $this->request->getPost('tipo'),
-            'conteudo' => $this->request->getPost('conteudo'),
+            'titulo'    => $this->request->getPost('titulo'),
+            'tipo'      => $this->request->getPost('tipo'),
+            'conteudo'  => $this->request->getPost('conteudo'),
         ];
 
         // Processamento do JSON vindo do Javascript

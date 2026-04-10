@@ -568,27 +568,14 @@ class Admin extends BaseController
             $model->update($id, ['status' => 'aceito']);
 
             // Envio de Email de Aprovação
-            $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
             try {
-                $mail->isSMTP();
-                $mail->Host       = 'smtppro.zoho.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'marcosanto@marcosantofoto.com.br';
-                $mail->Password   = 'curEYib00ffd';
-                $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-                $mail->Port       = 465;
-                $mail->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
-                $mail->CharSet = 'UTF-8';
-                $mail->isHTML(true);
-
-                $corpo = view('emails/candidatura_aceita', (array)$candidato);
-                $mail->setFrom('marcosanto@marcosantofoto.com.br', 'Marco Santo');
+                $mail = $this->criarMailer();
                 $mail->addAddress($candidato->email);
                 $mail->Subject = 'Sua candidatura foi selecionada — marcosantofoto.com.br';
-                $mail->Body    = $corpo;
+                $mail->Body    = view('emails/candidatura_aceita', (array)$candidato);
                 $mail->send();
             } catch (\Exception $e) {
-                log_message('error', 'Falha email aprovação: ' . $mail->ErrorInfo);
+                log_message('error', 'Falha email aprovação: ' . $e->getMessage());
             }
         }
         
@@ -612,27 +599,14 @@ class Admin extends BaseController
             $model->update($id, ['status' => 'recusado']);
 
             // Envio de Email de Recusa
-            $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
             try {
-                $mail->isSMTP();
-                $mail->Host       = 'smtppro.zoho.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'marcosanto@marcosantofoto.com.br';
-                $mail->Password   = 'curEYib00ffd';
-                $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-                $mail->Port       = 465;
-                $mail->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
-                $mail->CharSet = 'UTF-8';
-                $mail->isHTML(true);
-
-                $corpo = view('emails/candidatura_recusada', (array)$candidato);
-                $mail->setFrom('marcosanto@marcosantofoto.com.br', 'Marco Santo');
+                $mail = $this->criarMailer();
                 $mail->addAddress($candidato->email);
                 $mail->Subject = 'Retorno da sua candidatura — marcosantofoto.com.br';
-                $mail->Body    = $corpo;
+                $mail->Body    = view('emails/candidatura_recusada', (array)$candidato);
                 $mail->send();
             } catch (\Exception $e) {
-                log_message('error', 'Falha email recusa: ' . $mail->ErrorInfo);
+                log_message('error', 'Falha email recusa: ' . $e->getMessage());
             }
         }
 
