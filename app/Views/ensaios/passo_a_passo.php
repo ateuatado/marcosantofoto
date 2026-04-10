@@ -224,19 +224,23 @@
                         <input type="hidden" name="item_id" id="inputItemId">
                         
                         <div class="mb-3">
-                            <input type="text" name="nome" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Seu Nome" required>
+                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Seu nome *</label>
+                            <input type="text" name="nome" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Como deseja ser chamado(a)" required>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="contato" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Seu WhatsApp ou E-mail" required>
+                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">WhatsApp ou e-mail *</label>
+                            <input type="text" name="contato" class="form-control rounded-0 bg-dark text-white border-secondary" placeholder="Preferência de contato" required>
                         </div>
-                        <div class="mb-3">
-                            <textarea name="mensagem" class="form-control rounded-0 bg-dark text-white border-secondary" rows="3" placeholder="Mensagem opcional..."></textarea>
+                        <div class="mb-4">
+                            <label class="d-block mb-1" style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);">Mensagem <span style="opacity:0.5;">(opcional)</span></label>
+                            <textarea name="mensagem" class="form-control rounded-0 bg-dark text-white border-secondary" rows="3" placeholder="Conte mais sobre seu interesse na obra..."></textarea>
                         </div>
                         
                         <button type="submit" id="btnEnviar" class="btn btn-warning rounded-0 text-uppercase ls-2 w-100 py-3 text-dark fw-bold">
                             Enviar Solicitação
                         </button>
                     </form>
+
                 </div>
 
                 <div id="areaSucesso" class="d-none text-center fade-in-up">
