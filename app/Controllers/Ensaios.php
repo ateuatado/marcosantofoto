@@ -278,7 +278,6 @@ class Ensaios extends BaseController
         }
 
         $pedidoModel = new \App\Models\PedidoAquisicaoModel();
-        $emailService = \Config\Services::email();
 
         // Coleta dados
         $dados = [
@@ -296,23 +295,22 @@ class Ensaios extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Erro ao salvar pedido.']);
         }
 
-        // 2. Dispara E-mail para o Curador (Você)
-        $emailService->setFrom('seu-email-zoho@seudominio.com', 'Sistema Fineart'); // AJUSTE SEU REMETENTE AQUI SE PRECISAR
-        $emailService->setTo('seu-email-pessoal@gmail.com'); // AJUSTE PARA ONDE VOCÊ QUER RECEBER O ALERTA
-        
-        $emailService->setSubject("Novo Interesse: Obra #{$dados['item_id']}");
-        $msg = "Um colecionador demonstrou interesse.<br><br>" .
-               "<strong>Nome:</strong> {$dados['nome_contato']}<br>" .
-               "<strong>Contato:</strong> {$dados['meio_contato']}<br>" .
-               "<strong>Mensagem:</strong> {$dados['mensagem']}<br>" .
-               "<strong>ID da Obra:</strong> #{$dados['item_id']}<br>" .
-               "<br>Verifique o painel administrativo.";
-        
-        $emailService->setMessage($msg);
-        
-        // Tenta enviar (sem travar o processo se falhar)
-        if ($emailService->send()) {
-            // Opcional: Enviar confirmação para o cliente também
+        // 2. Dispara E-mail para o Curador via PHPMailer (mesma config do resto do sistema)
+        try {
+            $cfg  = config('Email');
+            $mail = $this->criarMailer();
+            $mail->addAddress($cfg->fromEmail ?: $cfg->SMTPUser);
+            $mail->Subject = "Novo Interesse: Obra #{$dados['item_id']}";
+            $mail->Body    = "Um colecionador demonstrou interesse.<br><br>"
+                           . "<strong>Nome:</strong> {$dados['nome_contato']}<br>"
+                           . "<strong>Contato:</strong> {$dados['meio_contato']}<br>"
+                           . "<strong>Mensagem:</strong> {$dados['mensagem']}<br>"
+                           . "<strong>ID da Obra:</strong> #{$dados['item_id']}<br><br>"
+                           . "Verifique o painel administrativo.";
+            $mail->send();
+        } catch (\Exception $e) {
+            // E-mail falhou mas o pedido já foi salvo — não bloqueia o usuário
+            log_message('error', 'Erro ao enviar e-mail de interesse: ' . $e->getMessage());
         }
 
         return $this->response->setJSON(['status' => 'success', 'message' => 'Solicitação recebida. Entraremos em contato.']);
